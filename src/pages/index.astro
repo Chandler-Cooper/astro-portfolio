@@ -1,11 +1,257 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import PortfolioCard from '../components/PortfolioCard.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Xinxin Li | Digital Portfolio">
+  <header class="sticky top-0 bg-white/80 backdrop-blur-md border-b border-slate-100 z-50">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="font-bold text-slate-900 text-lg">
+        <span class="lang-cn">李欣欣</span>
+        <span class="lang-en">Xinxin Li</span>
+      </a>
+      <nav class="flex items-center space-x-6 text-sm font-medium text-slate-600">
+        <a href="#about" class="hover:text-blue-600 transition-colors">
+          <span class="lang-cn">关于</span><span class="lang-en">About</span>
+        </a>
+        <a href="#skills" class="hover:text-blue-600 transition-colors">
+          <span class="lang-cn">技能</span><span class="lang-en">Skills</span>
+        </a>
+        <a href="#projects" class="hover:text-blue-600 transition-colors">
+          <span class="lang-cn">项目</span><span class="lang-en">Projects</span>
+        </a>
+        <a href="/resume.pdf" target="_blank" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-1">
+          <span class="lang-cn">下载简历 (PDF)</span>
+          <span class="lang-en">Resume (PDF)</span>
+        </a>
+        <button id="lang-toggle" class="border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition-colors cursor-pointer text-xs font-bold text-slate-700">
+          <span id="lang-toggle-text">English</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-12 flex-grow space-y-20">
+    <!-- Hero Section -->
+    <section id="about" class="py-6">
+      <div class="max-w-3xl space-y-6">
+        <span class="text-blue-600 font-mono font-bold text-sm tracking-widest uppercase">
+          <span class="lang-cn">欢迎来到我的数字履历</span>
+          <span class="lang-en">Welcome to my Digital Portfolio</span>
+        </span>
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+          <span class="lang-cn">以数据为桥梁，将商业洞察转化为决策行动。</span>
+          <span class="lang-en">Bridging commercial intuition with data-driven execution.</span>
+        </h1>
+        <div class="text-lg text-slate-600 leading-relaxed">
+          <p class="lang-cn">
+            我是一名管理科学与工程专业的商业数据分析实验班学生，致力于通过数据驱动的深度洞察，弥合学术严谨性与商业执行力之间的鸿沟。<br />
+在过往的科研实践中，我始终保持极高的求知欲与探索动力，善于将复杂的行业痛点转化为可量化的分析框架。我执行“以数据为决策基石”的工作方式，能够熟练运用统计建模、机器学习及另类数据挖掘工具，辅助决策过程。<br />
+我深信“低 Ego，高执行”的职业哲学：在团队中，我追求信息的客观性而非个人的观点验证，专注于以最小的阻力推动项目进度，确保分析结论具备落地的韧性。作为一名自驱力极强的行动者，我习惯于在面对非结构化信息时，主动构建流程与工具，将问题定义清楚并高效闭环。我不仅关注数据的表面逻辑，更致力于发现数据背后的商业叙事。
+          </p>
+          <p class="lang-en">
+            I am a Business Data Analysis undergraduate, dedicated to bridging the gap between academic rigor and commercial execution through data-driven insights.<br />
+Driven by a persistent intellectual curiosity, I excel at deconstructing complex industry pain points into actionable, quantitative frameworks. My analytical approach is fundamentally data-centric, leveraging statistical modeling, machine learning, and alternative data mining to provide a robust foundation for strategic decision-making.<br />
+I subscribe to a professional philosophy characterized by low ego and high execution. In a team setting, I prioritize objective data over personal confirmation, focusing on the seamless delivery of results with pragmatic resilience. As a self-driven problem solver, I thrive on navigating unstructured challenges; I proactively build tools and workflows to bring clarity to ambiguity and ensure project closure. I do not just analyze data points—I strive to uncover the commercial narratives that drive impactful outcomes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+   <!-- Skills Section -->
+    <section id="skills" class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-blue-600 pl-3">
+        <span class="lang-cn">技术与技能栈</span>
+        <span class="lang-en">Technical Skills & Proficiency</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 块 1: Core Analytics -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <h3 class="font-bold text-slate-800 mb-3">
+            <span class="lang-cn">核心分析与金融建模</span>
+            <span class="lang-en">Core Analytics & Financial Modeling</span>
+          </h3>
+          <ul class="space-y-2 text-slate-600 text-sm leading-relaxed">
+            <li>
+              <strong>
+                <span class="lang-cn">分析工具：</span>
+                <span class="lang-en">Tools: </span>
+              </strong>
+              Python (Pandas, Scikit-learn), R (Tidyverse, Tidyquant), SQL
+            </li>
+            <li>
+              <strong>
+                <span class="lang-cn">方法论：</span>
+                <span class="lang-en">Methodology: </span>
+              </strong>
+              <span class="lang-cn">计量经济学建模、回归分析、Brinson 归因模型、PEST/SWOT 分析</span>
+              <span class="lang-en">Econometric Modeling, Regression Analysis, Brinson Attribution, PEST/SWOT</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 块 2: AI & ML -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <h3 class="font-bold text-slate-800 mb-3">
+            <span class="lang-cn">人工智能与机器学习</span>
+            <span class="lang-en">AI & Machine Learning</span>
+          </h3>
+          <ul class="space-y-2 text-slate-600 text-sm leading-relaxed">
+            <li>
+              <strong>
+                <span class="lang-cn">算法技术：</span>
+                <span class="lang-en">Techniques: </span>
+              </strong>
+              XGBoost / LightGBM, SHAP (<span class="lang-cn">可解释性人工智能</span><span class="lang-en">Explainable AI</span>)
+            </li>
+            <li>
+              <strong>
+                <span class="lang-cn">自然语言处理：</span>
+                <span class="lang-en">NLP: </span>
+              </strong>
+              FinBERT (<span class="lang-cn">金融文本/舆情分析</span><span class="lang-en">NLP/Sentiment Analysis</span>)
+            </li>
+          </ul>
+        </div>
+
+        <!-- 块 3: Operations -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <h3 class="font-bold text-slate-800 mb-3">
+            <span class="lang-cn">业务数字化与协作工具</span>
+            <span class="lang-en">Operations & Digital Tools</span>
+          </h3>
+          <ul class="space-y-2 text-slate-600 text-sm leading-relaxed">
+            <li>
+              <span class="lang-cn">精通 Excel/VBA，熟练运用 MS PowerPoint 撰写专业商业策略演示报告，熟练使用 Git/GitHub 进行协作开发与版本管理。</span>
+              <span class="lang-en">Excel/VBA (Advanced), MS Powerpoint (Professional Strategy Presentation), Git/GitHub</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 块 4: Languages -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <h3 class="font-bold text-slate-800 mb-3">
+            <span class="lang-cn">语言能力</span>
+            <span class="lang-en">Languages</span>
+          </h3>
+          <ul class="space-y-2 text-slate-600 text-sm leading-relaxed">
+            <li>
+              <strong>
+                <span class="lang-cn">英语：</span>
+                <span class="lang-en">English: </span>
+              </strong>
+              <span class="lang-cn">专业工作水平 (六级 560+，四级 600+)</span>
+              <span class="lang-en">Professional Working Proficiency (CET-6 560+, CET-4 600+)</span>
+            </li>
+            <li>
+              <strong>
+                <span class="lang-cn">普通话：</span>
+                <span class="lang-en">Mandarin: </span>
+              </strong>
+              <span class="lang-cn">母语 (普通话水平测试二级甲等)</span>
+              <span class="lang-en">Native (PSC Grade 2, Class B)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-blue-600 pl-3">
+        <span class="lang-cn">战略性项目与技术实践</span>
+        <span class="lang-en">Strategic Projects & Technical Portfolio</span>
+      </h2>
+      <div class="space-y-8">
+        <PortfolioCard
+          titleCn="海外市场战略调研项目 (国际项目)"
+          titleEn="Overseas Market Strategic Research (Intl. Project)"
+          orgCn="东风汽车集团"
+          orgEn="Dongfeng Motor Corp"
+          time="Strategic Initiatives"
+          tags={['PEST Analysis', 'Tariff Modeling', 'Market Entry Matrix', 'Data Visualization']}
+          roleCn="带领调研小组，链接海外销售渠道与终端用户，解决“品牌认知低”与“本地化不足”的痛点。"
+          roleEn="Led a research team to bridge the gap between Chinese tech-advantage and local consumer usage scenarios."
+          contextCn="聚焦豪华新能源汽车品牌的“品牌出海”战略，重点突破中东市场渗透壁垒。"
+          contextEn="Focused on the 'Brand Going Global' strategy for luxury electric vehicles in the Middle East."
+          methodologyCn="运用 PEST 分析与关税模型，构建涵盖风险评级与消费者用车场景的可视化数据库。"
+          methodologyEn="Integrated PEST analysis and quantitative tariff modeling to create a comprehensive 'Market Entry Risk Matrix'."
+          impactCn="产出《市场进入策略与案例研究报告》，为企业海外市场拓展提供高价值决策依据。"
+          impactEn="Delivered a decision-support report featuring visualized data and case studies, facilitating strategic localization for the corporate partner."
+        />
+
+        <PortfolioCard
+          titleCn="金融大数据引擎与可解释人工智能风控建模"
+          titleEn="Financial Data Engine & XAI Risk Modeling"
+          orgCn="GitHub 开源项目"
+          orgEn="GitHub Open Source Project"
+          time="Technical Portfolio"
+          tags={['Python', 'XGBoost', 'SHAP', 'FinBERT', 'AKShare', 'NLP']}
+          contextCn="作为数据分析实验班学生，为了展示自驱力，搭建端到端的金融数据与风控平台。"
+          contextEn="Developed an end-to-end sandbox platform to demonstrate data engineering and predictive risk modeling."
+          methodologyCn="基于 Python (AKShare) 搭建数据中台；构建 XGBoost 违约预警模型，并利用 SHAP 技术满足金融合规要求；加载 FinBERT 对财经新闻进行舆情分析。"
+          methodologyEn="Built a Python data pipeline for tracking metrics; trained an XGBoost model explained via SHAP (Basel compliant); deployed FinBERT for sentiment analysis on news."
+          impactCn="成功实现数据清洗自动化与风控决策逻辑可视化拆解，量化捕捉市场情绪溢价。"
+          impactEn="Automated pipeline tracking and successfully integrated auditing-grade explanation dashboards alongside volatility signals."
+        />
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-blue-600 pl-3">
+        <span class="lang-cn">职场实践与组织经历</span>
+        <span class="lang-en">Professional Experience & Leadership</span>
+      </h2>
+      <div class="space-y-8">
+        <PortfolioCard
+          titleCn="校园招聘运营助理"
+          titleEn="Recruitment Operations Assistant"
+          orgCn="武汉大学就业指导中心"
+          orgEn="Wuhan University Career Center"
+          time="Professional Experience"
+          tags={['Recruitment Operations', 'Process Automation', 'Algorithm Design', 'Collaboration']}
+          contextCn="作为高校与企业间的高效联络桥梁，统筹 21 家头部企业的校招对接。"
+          contextEn="Managed full-cycle recruitment operations for 21 partner enterprises, bridging university resources with corporate talent needs."
+          methodologyCn="构建基于技能匹配算法的简历初筛工作流，优化招聘各环节对接流程。"
+          methodologyEn="Developed an automated screening workflow using skill-matching algorithms to streamline placement and operations."
+          impactCn="显著提升了企业与学生初试安排的效率与准确度。"
+          impactEn="Significantly reduced talent identification and scheduling cycle times, improving operational satisfaction."
+        />
+
+        <PortfolioCard
+          titleCn="校园心理健康服务中心 / 数据分析中心"
+          titleEn="Data Analyst & Growth Lead"
+          orgCn="武汉大学数据分析中心"
+          orgEn="WHU Data Analysis & Mental Health Center"
+          time="Leadership & Social"
+          tags={['Python Automation', 'Data Cleaning', 'Social Media Strategy', 'User Growth']}
+          contextCn="主导校园服务中心新媒体增长与日常数据运维。"
+          contextEn="Led student services digital strategy and managed core datasets for organizational scaling."
+          methodologyCn="利用 Python 实现经济数据集清洗自动化；基于分析洞察主导社交媒体运营策略。"
+          methodologyEn="Automated financial/economic data pipelines for the center and directed data-driven audience engagement initiatives."
+          impactCn="实现数据清洗自动化（准确率 100%），运营策略调整带来用户基数 19% 的精准增长。"
+          impactEn="Achieved 100% automation accuracy in pipeline processing and delivered a 19% boost in targeted audience acquisition."
+        />
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 py-12 mt-auto border-t border-slate-800">
+    <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+      <div class="space-y-3">
+        <h3 class="text-white font-semibold">Contact & Location</h3>
+        <p>Email: <a href="mailto:xinxin.li.career@outlook.com" class="hover:text-white transition-colors">xinxin.li.career@outlook.com</a></p>
+        <p>Phone: +86 19947693723</p>
+        <p>Location: Wuhan, China</p>
+      </div>
+      <div class="space-y-3 md:text-right">
+        <h3 class="text-white font-semibold">Links</h3>
+        <p><a href="https://github.com/your-id" target="_blank" class="hover:text-white transition-colors">GitHub: github.com/your-id</a></p>
+        <p><a href="https://linkedin.com/in/your-id" target="_blank" class="hover:text-white transition-colors">LinkedIn: linkedin.com/in/your-id</a></p>
+        <p class="text-slate-500 pt-4">© 2026 Xinxin Li. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </Layout>

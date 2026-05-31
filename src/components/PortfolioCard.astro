@@ -1,0 +1,85 @@
+---
+interface Props {
+  titleCn: string;
+  titleEn: string;
+  orgCn: string;
+  orgEn: string;
+  time: string;
+  tags: string[];
+  contextCn: string;
+  contextEn: string;
+  roleCn?: string;
+  roleEn?: string;
+  methodologyCn: string;
+  methodologyEn: string;
+  impactCn: string;
+  impactEn: string;
+}
+
+const {
+  titleCn, titleEn, orgCn, orgEn, time, tags,
+  contextCn, contextEn, roleCn, roleEn,
+  methodologyCn, methodologyEn, impactCn, impactEn
+} = Astro.props;
+---
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+  <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+    <div>
+      <h3 class="text-xl font-bold text-slate-900">
+        <span class="lang-cn">{titleCn}</span>
+        <span class="lang-en">{titleEn}</span>
+      </h3>
+      <p class="text-blue-600 font-semibold mt-1">
+        <span class="lang-cn">{orgCn}</span>
+        <span class="lang-en">{orgEn}</span>
+      </p>
+    </div>
+    <span class="text-slate-400 text-sm mt-2 md:mt-0 font-mono">{time}</span>
+  </div>
+
+  <div class="flex flex-wrap gap-2 mb-4">
+    {tags.map((tag) => (
+      <span class="px-2.5 py-0.5 bg-slate-100 text-slate-600 text-xs font-medium rounded-full">
+        {tag}
+      </span>
+    ))}
+  </div>
+
+  <div class="space-y-3 text-slate-600 text-sm leading-relaxed">
+    {roleCn && (
+      <p>
+        <strong class="text-slate-800">
+          <span class="lang-cn">职责：</span>
+          <span class="lang-en">Role: </span>
+        </strong>
+        <span class="lang-cn">{roleCn}</span>
+        <span class="lang-en">{roleEn}</span>
+      </p>
+    )}
+    <p>
+      <strong class="text-slate-800">
+        <span class="lang-cn">背景：</span>
+        <span class="lang-en">Context: </span>
+      </strong>
+      <span class="lang-cn">{contextCn}</span>
+      <span class="lang-en">{contextEn}</span>
+    </p>
+    <p>
+      <strong class="text-slate-800">
+        <span class="lang-cn">方法：</span>
+        <span class="lang-en">Methodology: </span>
+      </strong>
+      <span class="lang-cn">{methodologyCn}</span>
+      <span class="lang-en">{methodologyEn}</span>
+    </p>
+    <p class="bg-blue-50/50 p-3 rounded-lg border-l-4 border-blue-500">
+      <strong class="text-slate-900">
+        <span class="lang-cn">成果/影响：</span>
+        <span class="lang-en">Impact: </span>
+      </strong>
+      <span class="lang-cn" class="text-slate-700 font-medium">{impactCn}</span>
+      <span class="lang-en" class="text-slate-700 font-medium">{impactEn}</span>
+    </p>
+  </div>
+</div>
