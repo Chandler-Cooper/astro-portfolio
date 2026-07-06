@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PortfolioCard from '../components/PortfolioCard.astro';
+import profilePic from '../assets/profile.jpg';
 ---
 
 <Layout title="Xinxin Li | Digital Portfolio">
@@ -34,26 +35,37 @@ import PortfolioCard from '../components/PortfolioCard.astro';
   <main class="max-w-5xl mx-auto px-6 py-12 flex-grow space-y-20">
     <!-- Hero Section -->
     <section id="about" class="py-6">
-      <div class="max-w-3xl space-y-6">
-        <span class="text-blue-600 font-mono font-bold text-sm tracking-widest uppercase">
-          <span class="lang-cn">欢迎来到我的数字履历</span>
-          <span class="lang-en">Welcome to my Digital Portfolio</span>
-        </span>
-        <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          <span class="lang-cn">以数据为桥梁，将商业洞察转化为决策行动。</span>
-          <span class="lang-en">Bridging commercial intuition with data-driven execution.</span>
-        </h1>
-        <div class="text-lg text-slate-600 leading-relaxed">
-          <p class="lang-cn">
-            我是一名管理科学与工程专业的商业数据分析实验班学生，致力于通过数据驱动的深度洞察，弥合学术严谨性与商业执行力之间的鸿沟。<br />
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-start gap-8">
+        <!-- 头像 -->
+        <div class="flex-shrink-0">
+          <img
+            src="/images/profile.jpg"
+            alt="Xinxin Li"
+            class="w-40 h-40 md:w-56 md:h-56 rounded-full object-cover shadow-lg border-4 border-white"
+          />
+        </div>
+        <!-- 文字内容 -->
+        <div class="max-w-3xl space-y-6">
+          <span class="text-blue-600 font-mono font-bold text-sm tracking-widest uppercase">
+            <span class="lang-cn">欢迎来到我的数字履历</span>
+            <span class="lang-en">Welcome to my Digital Portfolio</span>
+          </span>
+          <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+            <span class="lang-cn">以数据为桥梁，将商业洞察转化为决策行动。</span>
+            <span class="lang-en">Bridging commercial intuition with data-driven execution.</span>
+          </h1>
+          <div class="text-lg text-slate-600 leading-relaxed">
+            <p class="lang-cn">
+              我是一名管理科学与工程专业的商业数据分析实验班学生，致力于通过数据驱动的深度洞察，弥合学术严谨性与商业执行力之间的鸿沟。<br />
 在过往的科研实践中，我始终保持极高的求知欲与探索动力，善于将复杂的行业痛点转化为可量化的分析框架。我执行“以数据为决策基石”的工作方式，能够熟练运用统计建模、机器学习及另类数据挖掘工具，辅助决策过程。<br />
 我深信“低 Ego，高执行”的职业哲学：在团队中，我追求信息的客观性而非个人的观点验证，专注于以最小的阻力推动项目进度，确保分析结论具备落地的韧性。作为一名自驱力极强的行动者，我习惯于在面对非结构化信息时，主动构建流程与工具，将问题定义清楚并高效闭环。我不仅关注数据的表面逻辑，更致力于发现数据背后的商业叙事。
-          </p>
-          <p class="lang-en">
-            I am a Business Data Analysis undergraduate, dedicated to bridging the gap between academic rigor and commercial execution through data-driven insights.<br />
+            </p>
+            <p class="lang-en">
+              I am a Business Data Analysis undergraduate, dedicated to bridging the gap between academic rigor and commercial execution through data-driven insights.<br />
 Driven by a persistent intellectual curiosity, I excel at deconstructing complex industry pain points into actionable, quantitative frameworks. My analytical approach is fundamentally data-centric, leveraging statistical modeling, machine learning, and alternative data mining to provide a robust foundation for strategic decision-making.<br />
 I subscribe to a professional philosophy characterized by low ego and high execution. In a team setting, I prioritize objective data over personal confirmation, focusing on the seamless delivery of results with pragmatic resilience. As a self-driven problem solver, I thrive on navigating unstructured challenges; I proactively build tools and workflows to bring clarity to ambiguity and ensure project closure. I do not just analyze data points—I strive to uncover the commercial narratives that drive impactful outcomes.
-          </p>
+            </p>
+          </div>
         </div>
       </div>
     </section>
