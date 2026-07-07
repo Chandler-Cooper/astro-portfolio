@@ -1,34 +1,50 @@
 ---
 import '../styles/global.css';
 
+// 定义属性类型，解决 VS Code 报错
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Xinxin Li's Personal Portfolio" } = Astro.props;
+const { 
+  title, 
+  description = "Xinxin Li (Alexander) | Business Data Analysis Portfolio" 
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="zh-CN" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- 基础 SEO -->
     <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- 🚀 社交分享卡片 (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.alexander-whu.space/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://www.alexander-whu.space/og-image.jpg" />
+
+    <!-- 🚀 Twitter / X 分享卡片 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://www.alexander-whu.space/og-image.jpg" />
   </head>
   <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
     <slot />
 
     <!-- 全局双语切换脚本 -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+      // 使用更安全的 DOM 操作写法
+      const initLanguage = () => {
         const toggleBtn = document.getElementById('lang-toggle');
         const toggleText = document.getElementById('lang-toggle-text');
         
@@ -44,22 +60,40 @@ const { title, description = "Xinxin Li's Personal Portfolio" } = Astro.props;
           localStorage.setItem('lang', isEn ? 'en' : 'cn');
           if (toggleText) toggleText.textContent = isEn ? '中文' : 'English';
         });
-      });
+      };
+
+      // 确保在页面加载和客户端路由跳转后都能运行
+      initLanguage();
+      document.addEventListener('astro:after-swap', initLanguage);
     </script>
 
-    <!-- 双语显示 CSS 控制规则 -->
     <style is:global>
       html, body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
       }
 
+      /* 双语控制 */
       .lang-en { display: none !important; }
-      .lang-cn { display: block !important; }
+      .lang-cn { display: block; }
       span.lang-cn { display: inline !important; }
 
       html.en .lang-cn { display: none !important; }
       html.en .lang-en { display: block !important; }
       html.en span.lang-en { display: inline !important; }
+
+      /* 🖨️ 打印样式 */
+      @media print {
+        header, footer, #lang-toggle, a[href*=".pdf"] { 
+          display: none !important; 
+        }
+        body { 
+          background-color: white !important; 
+          color: black !important; 
+        }
+        section, div.bg-white { 
+          page-break-inside: avoid; 
+        }
+      }
     </style>
   </body>
 </html>
