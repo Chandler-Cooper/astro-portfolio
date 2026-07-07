@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css'; // 👈 加上这一行，引入你项目中的全局样式表！
+import '../styles/global.css';
 
 interface Props {
   title: string;
@@ -49,13 +49,12 @@ const { title, description = "Xinxin Li's Personal Portfolio" } = Astro.props;
 
     <!-- 双语显示 CSS 控制规则 -->
     <style is:global>
-      /*  👇 在这里添加你喜欢的全局字体样式 */
       html, body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
       }
 
-	  .lang-en { display: none !important; }
-      .lang-cn { display: block; }
+      .lang-en { display: none !important; }
+      .lang-cn { display: block !important; }
       span.lang-cn { display: inline !important; }
 
       html.en .lang-cn { display: none !important; }

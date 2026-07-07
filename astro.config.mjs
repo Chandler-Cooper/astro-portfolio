@@ -8,6 +8,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://Chandler-Cooper.github.io',
-  base: '/astro-portfolio',
+  site: 'https://www.alexander-whu.space',
 });
